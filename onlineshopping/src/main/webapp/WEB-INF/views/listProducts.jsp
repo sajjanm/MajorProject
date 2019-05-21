@@ -68,10 +68,8 @@
 								<th>Brand</th>
 								<th>Price</th>
 								<th>Expire Date</th>
-								<security:authorize access="hasAuthority('ADMIN')">
-								<th>Activate</th>	
-								</security:authorize>
 								<th>Qty. Available</th>
+								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -81,11 +79,9 @@
 								<th>Name</th>
 								<th>Brand</th>
 								<th>Price</th>
-								<th>Expire Date</th>
-								<security:authorize access="hasAuthority('ADMIN')">
-								<th>Activate</th>	
-								</security:authorize>	
+								<th>Expire Date</th>	
 								<th>Qty. Available</th>
+								<th></th>	
 								<th></th>	
 							</tr>
 						</tfoot>

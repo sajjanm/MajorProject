@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.kzn.onlineshopping.service.ExcelService;
 import net.kzn.onlineshopping.service.ProductService;
+import net.kzn.onlineshopping.service.UserService;
 import net.kzn.onlineshopping.util.FileUtil;
 import net.kzn.onlineshopping.validator.ExcelFileValidator;
 import net.kzn.onlineshopping.validator.ProductValidator;
@@ -29,6 +30,7 @@ import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
 import net.kzn.shoppingbackend.dto.ExcelFile;
 import net.kzn.shoppingbackend.dto.Product;
+import net.kzn.shoppingbackend.dto.User;
 
 @Controller
 @RequestMapping("/manage")
@@ -44,6 +46,9 @@ public class ManagementController {
 	
 	@Autowired
 	private ExcelService excelService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private ProductService productService;
@@ -124,7 +129,6 @@ public class ManagementController {
 		return "redirect:/manage/upload?success=true";
 	}
 
-	
 	@RequestMapping("/{id}/product")
 	public ModelAndView manageProductEdit(@PathVariable int id) {		
 
@@ -139,7 +143,6 @@ public class ManagementController {
 		return mv;
 		
 	}
-	
 	
 	@RequestMapping(value = "/product", method=RequestMethod.POST)
 	public String managePostProduct(@Valid @ModelAttribute("product") Product mProduct, 
@@ -178,7 +181,6 @@ public class ManagementController {
 		return "redirect:/manage/product?success=product";
 	}
 
-	
 	@RequestMapping(value = "/product/{id}/activation", method=RequestMethod.GET)
 	@ResponseBody
 	public String managePostProductActivation(@PathVariable int id) {		
@@ -189,15 +191,12 @@ public class ManagementController {
 		return (isActive)? "Product Dectivated Successfully!": "Product Activated Successfully";
 	}
 			
-
 	@RequestMapping(value = "/category", method=RequestMethod.POST)
 	public String managePostCategory(@ModelAttribute("category") Category mCategory, HttpServletRequest request) {					
 		categoryDAO.add(mCategory);		
 		return "redirect:" + request.getHeader("Referer") + "?success=category";
 	}
 			
-	
-	
 	@ModelAttribute("categories") 
 	public List<Category> modelCategories() {
 		return categoryDAO.list();
@@ -208,11 +207,21 @@ public class ManagementController {
 		return new Category();
 	}
 	
-	
 	@RequestMapping(value = "/expire", method=RequestMethod.GET)
 	public List<Product> getAllNearExpire(){
-		
 		return productService.getProductByExpireAndQty();
+	}
+	
+	@RequestMapping("/customer")
+	public ModelAndView getAllCustomer(@RequestParam(name="success",required=false)String success) {		
+
+		ModelAndView mv = new ModelAndView("page");	
+		mv.addObject("title","View Customers");		
+		mv.addObject("userClickCustomerManagement",true);
+		
+		return mv;
+		
+		
 		
 	}
 }

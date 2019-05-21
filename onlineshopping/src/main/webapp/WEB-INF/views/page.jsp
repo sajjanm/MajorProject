@@ -100,6 +100,11 @@
 			<c:if test="${userClickUploadProduct == true}">
 				<%@include file="uploadProduct.jsp"%>
 			</c:if>	
+						
+			<!-- Load only when user clicks upload product -->
+			<c:if test="${userClickCustomerManagement == true}">
+				<%@include file="listCustomers.jsp"%>
+			</c:if>	
 
 			<!-- Load only when user clicks manage product -->
 			<c:if test="${userClickShowCart == true}">

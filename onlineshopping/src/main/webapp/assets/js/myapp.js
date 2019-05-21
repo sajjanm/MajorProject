@@ -38,6 +38,9 @@ $(function() {
 		case 'Upload Product':
 			$('#uploadProduct').addClass('active');
 			break;
+		case 'View Customers':
+			$('#manageCustomer').addClass('active');
+			break;
 		case 'Shopping Cart':
 			$('#userModel').addClass('active');
 			break;		
@@ -104,8 +107,8 @@ $(function() {
 									return new Date(data).toLocaleDateString('en-US')
 								}
 							},
-							
 							{
+								
 								data : 'quantity',
 								mRender : function(data, type, row) {
 
@@ -116,6 +119,26 @@ $(function() {
 									return data;
 
 								}
+							},
+							{
+								
+								data : 'active',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									
+									var str2 = '';
+									if(userRole == 'ADMIN') {
+										if(data) {											
+											str2 += '<label class="switch"> <input type="checkbox" value="'+row.id+'" checked="checked">  <div class="slider round"> </div></label>';
+											
+										}else {
+											str2 += '<label class="switch"> <input type="checkbox" value="'+row.id+'">  <div class="slider round"> </div></label>';
+										}
+									}
+									
+									return str2;
+								}
+								
 							},
 							{
 								data : 'id',
@@ -154,103 +177,10 @@ $(function() {
 
 								}
 
-							} ]
-				});
-	}
+							} 
 
-	
-	
-	// list of all products for admin
-	var $newTable = $('#newproductsTable');
-	
-	
-	if($newTable.length) {
-		
-		var jsonUrl = window.contextRoot + '/json/data/admin/all/expireProducts';
-		console.log(jsonUrl);
-		
-		$newTable.DataTable({
-					lengthMenu : [ [ 10, 30, 50, -1 ], [ '10 Records', '30 Records', '50 Records', 'ALL' ] ],
-					pageLength : 30,
-					ajax : {
-						url : jsonUrl,
-						dataSrc : ''
-					},
-					columns : [		
-					           	{data: 'id'},
-
-
-					           	{data: 'code',
-					           	 bSortable: false,
-					           		mRender: function(data,type,row) {
-					           			return '<img src="' + window.contextRoot
-										+ '/resources/images/' + data
-										+ '.jpg" class="dataTableImg"/>';					           			
-					           		}
-					           	},
-					           	{
-									data : 'name'
-								},
-								{
-									data : 'brand'
-								},
-								{
-									data : 'quantity',
-									mRender : function(data, type, row) {
-
-										if (data < 1) {
-											return '<span style="color:red">Out of Stock!</span>';
-										}
-
-										return data;
-
-									}
-								},
-								{
-									data : 'unitPrice',
-									mRender : function(data, type, row) {
-										return '&#36; ' + data
-									}
-								},
-								{
-									data : 'expireDate',
-									mRender : function(data, type, row) {
-										return new Date(data).toLocaleDateString('en-US')
-									}
-								},
-								{
-									data : 'active',
-									bSortable : false,
-									mRender : function(data, type, row) {
-										var str = '';
-										if(data) {											
-											str += '<label class="switch"> <input type="checkbox" value="'+row.id+'" checked="checked">  <div class="slider round"> </div></label>';
-											
-										}else {
-											str += '<label class="switch"> <input type="checkbox" value="'+row.id+'">  <div class="slider round"> </div></label>';
-										}
-										
-										return str;
-									}
-								},
-								{
-									data : 'id',
-									bSortable : false,
-									mRender : function(data, type, row) {
-
-										var str = '';
-										str += '<a href="'
-												+ window.contextRoot
-												+ '/manage/'
-												+ data
-												+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
-
-										return str;
-									}
-								}					           	
 					],
-					
-					
+
 					initComplete: function () {
 						var api = this.api();
 						api.$('.switch input[type="checkbox"]').on('change' , function() {							
@@ -285,10 +215,48 @@ $(function() {
 						});
 							
 					}
+
 				});
 	}
+	
+	// code for view all customer table
+	var $customerTable = $('#customerListTable');
 
+	// execute the below code only where we have this table
+	if ($customerTable.length) {
+		// console.log('Inside the table!');
 
+		var jsonUrl = window.contextRoot + '/json/data/all/customers';
+		console.log(jsonUrl);
+
+		$customerTable
+				.DataTable({
+
+					lengthMenu : [ [ 3, 5, 10, -1 ],
+							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
+					pageLength : 5,
+					ajax : {
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+								data : 'firstName'
+							},
+							{
+								data : 'lastName'
+							},
+							{
+								data : 'email'
+							},
+							{
+								data : 'contactNumber'
+							} 
+
+					]
+
+				});
+	}
 
 	// list of all products for admin
 	var $productsTable = $('#productsTable');
@@ -296,7 +264,7 @@ $(function() {
 	
 	if($productsTable.length) {
 		
-		var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/expireProducts';
 		console.log(jsonUrl);
 		
 		$productsTable.DataTable({

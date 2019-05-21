@@ -30,12 +30,17 @@
                     </li>
 					<security:authorize access="hasAuthority('ADMIN')">
 	                    <li id="manageProduct">
-	                        <a href="${contextRoot}/manage/product">Manage Product</a>
+	                        <a href="${contextRoot}/manage/product">Manage Products</a>
 	                    </li>					
 					</security:authorize>
 					<security:authorize access="hasAuthority('ADMIN')">
 	                    <li id="uploadProduct">
-	                        <a href="${contextRoot}/manage/upload">Upload Product</a>
+	                        <a href="${contextRoot}/manage/upload">Upload Products</a>
+	                    </li>					
+					</security:authorize>
+					<security:authorize access="hasAuthority('ADMIN')">
+	                    <li id="manageCustomer">
+	                        <a href="${contextRoot}/manage/customer">View Customers</a>
 	                    </li>					
 					</security:authorize>
                 </ul>

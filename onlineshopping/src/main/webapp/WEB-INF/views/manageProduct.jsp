@@ -1,6 +1,4 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<script src="${js}/productsController.js"></script>
-
 <div class="container">
 
 	<c:if test="${not empty message}">	
@@ -159,7 +157,8 @@
 	</div>
 	
 	<hr/>	
-	<h1>Products That are expiring soon</h1>
+	<h1>Products that are expiring soon</h1>
+	<h5>The products that are expiring in less than 2 weeks</h5>
 	<hr/>
 	
 	<div class="row">

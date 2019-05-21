@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.kzn.onlineshopping.service.ProductService;
+import net.kzn.onlineshopping.service.UserService;
 import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Product;
+import net.kzn.shoppingbackend.dto.User;
 
 @Controller
 @RequestMapping("/json/data")
@@ -21,6 +23,9 @@ public class JsonDataController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private UserService userService;
 	
 
 	@RequestMapping("/admin/all/products")
@@ -42,6 +47,14 @@ public class JsonDataController {
 	public List<Product> getAllProducts() {
 		
 		return productDAO.listActiveProducts();
+				
+	}
+	
+	@RequestMapping("/all/customers")
+	@ResponseBody
+	public List<User> getAllCustomers() {
+		
+		return userService.getAllCustomer();
 				
 	}
 	
