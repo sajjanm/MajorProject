@@ -226,9 +226,11 @@ $(function() {
 	if ($customerTable.length) {
 		// console.log('Inside the table!');
 
-		var jsonUrl = window.contextRoot + '/json/data/all/customers';
+		var jsonUrl = '';
+		jsonUrl = window.contextRoot + '/json/data/all/customers';
 		console.log(jsonUrl);
 
+		console.log($customerTable.DataTable);
 		$customerTable
 				.DataTable({
 

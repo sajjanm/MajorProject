@@ -15,6 +15,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user_detail")
 public class User implements Serializable{
@@ -110,6 +112,7 @@ public class User implements Serializable{
 	
 	
 	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Cart cart;
 	public Cart getCart() {
 		return cart;
