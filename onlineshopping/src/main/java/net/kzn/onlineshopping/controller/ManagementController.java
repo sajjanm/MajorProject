@@ -171,6 +171,7 @@ public class ManagementController {
 		mProduct.setSku(productRequest.getSku());
 		mProduct.setUnitPrice(productRequest.getUnitPrice());
 		mProduct.setYoutubeLink(productRequest.getYoutubeLink());
+		mProduct.setMarkdown(productRequest.getMarkdown());
 		
 		// mandatory file upload check
 		if(mProduct.getId() == 0) {

@@ -54,6 +54,7 @@ $(function() {
 
 	// code for jquery dataTable
 	var $table = $('#productListTable');
+	var $markdownClass = ''
 
 	// execute the below code only where we have this table
 	if ($table.length) {
@@ -72,11 +73,16 @@ $(function() {
 
 					lengthMenu : [ [ 3, 5, 10, -1 ],
 							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
-					pageLength : 5,
+					pageLength : 30,
 					ajax : {
 						url : jsonUrl,
 						dataSrc : ''
 					},
+					"createdRow": function( row, data, dataIndex){
+		                if( data["markdown"] > 0){
+		                    $(row).addClass('markdown');
+		                }
+		            },
 					columns : [
 							{
 								data : 'code',
@@ -98,7 +104,12 @@ $(function() {
 							{
 								data : 'unitPrice',
 								mRender : function(data, type, row) {
-									return '&#36; ' + data
+									if(row.markdown>0){
+										$markdownClass = "markdown";
+										return '&#36; ' + (data - (data*row.markdown)/100)
+									}else{
+										return '&#36; ' + data
+									}
 								}
 							},
 							{
@@ -177,7 +188,7 @@ $(function() {
 
 								}
 
-							} 
+							}
 
 					],
 
@@ -309,7 +320,11 @@ $(function() {
 								{
 									data : 'unitPrice',
 									mRender : function(data, type, row) {
-										return '&#36; ' + data
+										if(row.markdown>0){
+											return '&#36; ' + (data - (data*row.markdown)/100)
+										}else{
+											return '&#36; ' + data
+										}
 									}
 								},
 								{

@@ -115,6 +115,7 @@ public class ExcelService {
                 // set other value of filled ...
                 newProduct.setActive(true);
                 newProduct.setSupplierId(1);
+                newProduct.setMarkdown(0);
                 
                 productLists.add(newProduct);
                 System.out.println("the new size of list is "+productLists.size());

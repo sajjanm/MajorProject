@@ -70,6 +70,9 @@ public class Product implements Serializable {
 	
 	@Column(name = "youtube_link")
 	private String youtubeLink;
+	
+	@Column(name = "markdown")
+	private Double markdown;
 		
 	@Transient
 	private MultipartFile file;
@@ -182,6 +185,14 @@ public class Product implements Serializable {
 
 	public void setYoutubeLink(String youtubeLink) {
 		this.youtubeLink = youtubeLink;
+	}
+
+	public Double getMarkdown() {
+		return markdown;
+	}
+
+	public void setMarkdown(Double markdown) {
+		this.markdown = markdown;
 	}
 
 	public MultipartFile getFile() {

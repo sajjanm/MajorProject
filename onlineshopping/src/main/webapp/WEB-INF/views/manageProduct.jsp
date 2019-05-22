@@ -92,6 +92,14 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-md-4">Mark down percentage</label>
+							<div class="col-md-8">
+								<sf:input type="number" path="markdown" class="form-control"
+									placeholder="Enter markdown percentage" />
+								<sf:errors path="markdown" cssClass="help-block" element="em"/> 
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="control-label col-md-4">Upload a file</label>
 							<div class="col-md-8">
 								<sf:input type="file" path="file" class="form-control"/>

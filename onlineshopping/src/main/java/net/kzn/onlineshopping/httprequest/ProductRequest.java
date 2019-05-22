@@ -15,9 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ProductRequest {
-
-
-	private static final long serialVersionUID = 1L;
 	
 	private int id;
 	
@@ -50,6 +47,8 @@ public class ProductRequest {
 	private String sku;
 	
 	private String youtubeLink;
+	
+	private Double markdown;
 		
 	private MultipartFile file;
 
@@ -173,18 +172,21 @@ public class ProductRequest {
 		this.youtubeLink = youtubeLink;
 	}
 
+	public double getMarkdown() {
+		return markdown;
+	}
+	
+	public void setMarkdown(double markdown) {
+		this.markdown = markdown;
+	}
+	
 	public MultipartFile getFile() {
 		return file;
 	}
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
+	}	
 	
 
 }

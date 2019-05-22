@@ -239,3 +239,13 @@ input:checked + .slider:before {
 		background:url(../images/pre-loader.gif) 50% no-repeat #fff
 }
 
+.markdownClass{
+	background-color : lime;
+	color: purple;
+}
+
+.markdown{
+	background-color : lime;
+	color: purple;
+}
+
