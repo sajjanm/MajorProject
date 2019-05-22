@@ -92,6 +92,9 @@ public class ExcelService {
                         case "Category":
                         	map.put(cellTitle.getStringCellValue(), cellTitle.getColumnIndex());
                         	break;
+                        case "Youtube":
+                        	map.put(cellTitle.getStringCellValue(), cellTitle.getColumnIndex());
+                        	break;
                     }
                 }
             }
@@ -148,6 +151,7 @@ public class ExcelService {
                 break;
             case "EXPIRE":
             	System.out.println("so called date is   "+fieldValue);
+            	System.out.println(new SimpleDateFormat("yyyy/dd/MM").parse(fieldValue) );
                 product.setExpireDate(new SimpleDateFormat("yyyy/dd/MM").parse(fieldValue) );
                 break;
             case "DESCRIPTION":
@@ -159,6 +163,9 @@ public class ExcelService {
             case "Category":
             	product.setCategoryId(Integer.parseInt(fieldValue));
             	break;
+            case "Youtube":
+            	product.setYoutubeLink((String) fieldValue);
+            	break;
         }
     }
 
@@ -168,10 +175,12 @@ public class ExcelService {
                 Product tempProduct = null;
                 tempProduct = productDAO.getBySku(p.getSku());
                 if (tempProduct == null) {
-                	System.out.println(p.getSku() + " getting created");
                     productDAO.add(p);
                 } else {
-                	System.out.println(p.getSku() + " getting updated");
+                	// It means the product is found with the same SKU
+                	// now we will add the quantity and change the expire date
+                	tempProduct.setQuantity(tempProduct.getQuantity()+ p.getQuantity());
+                	tempProduct.setExpireDate(p.getExpireDate());
                 	productDAO.update(tempProduct);
                 }
             }

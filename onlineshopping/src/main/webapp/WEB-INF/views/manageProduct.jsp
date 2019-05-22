@@ -13,7 +13,7 @@
 
 		<div class="col-md-offset-2 col-md-8">
 
-			<div class="panel panel-primary">
+			<div class="panel panel-success">
 
 				<div class="panel-heading">
 
@@ -67,8 +67,30 @@
 								<sf:errors path="quantity" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
-
-
+						<div class="form-group">
+							<label class="control-label col-md-4">Exipre</label>
+							<div class="col-md-8">
+								<sf:input type="date" path="expireDate" class="form-control"
+									placeholder="Expire Date" />
+								<sf:errors path="expireDate" cssClass="help-block" element="em"/> 
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">Product SKU</label>
+							<div class="col-md-8">
+								<sf:input type="text" path="sku" class="form-control"
+									placeholder="Please enter product sku" />
+								<sf:errors path="sku" cssClass="help-block" element="em"/> 
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">Embeded Youtube Link</label>
+							<div class="col-md-8">
+								<sf:input type="text" path="youtubeLink" class="form-control"
+									placeholder="Embeded Youtube link" />
+								<sf:errors path="youtubeLink" cssClass="help-block" element="em"/> 
+							</div>
+						</div>
 						<div class="form-group">
 							<label class="control-label col-md-4">Upload a file</label>
 							<div class="col-md-8">

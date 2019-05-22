@@ -166,7 +166,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getNearExpireAndRunnigLowProducts(Date currentDate, Date limitingDate){
 		
-		String query = "FROM Product where active = true and expireDate > :currentDate and expireDate < :limitingDate ORDER BY id";
+		String query = "FROM Product where active = true and expireDate > :currentDate and expireDate < :limitingDate or quantity<10 ORDER BY id";
 		
 		return sessionFactory
 				.getCurrentSession()

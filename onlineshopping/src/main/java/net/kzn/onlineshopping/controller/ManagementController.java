@@ -1,6 +1,11 @@
 package net.kzn.onlineshopping.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -19,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.onlineshopping.httprequest.ProductRequest;
 import net.kzn.onlineshopping.service.ExcelService;
 import net.kzn.onlineshopping.service.ProductService;
 import net.kzn.onlineshopping.service.UserService;
@@ -145,8 +151,26 @@ public class ManagementController {
 	}
 	
 	@RequestMapping(value = "/product", method=RequestMethod.POST)
-	public String managePostProduct(@Valid @ModelAttribute("product") Product mProduct, 
-			BindingResult results, Model model, HttpServletRequest request) {
+	public String managePostProduct(@Valid @ModelAttribute("product") ProductRequest productRequest, 
+			BindingResult results, Model model, HttpServletRequest request) throws ParseException {
+		
+		Product mProduct = new Product();
+		mProduct.setActive(productRequest.isActive());
+		mProduct.setBrand(productRequest.getBrand());
+		mProduct.setCategoryId(productRequest.getCategoryId());
+		mProduct.setCode(productRequest.getCode());
+		mProduct.setDescription(productRequest.getDescription());
+		System.out.println("the date here is "+ productRequest.getExpireDate());
+		DateFormat format = new SimpleDateFormat("yyyy-dd-MM", Locale.ENGLISH);
+		Date date = format.parse(productRequest.getExpireDate());
+		mProduct.setExpireDate(date);
+		mProduct.setFile(productRequest.getFile());
+		mProduct.setId(productRequest.getId());
+		mProduct.setName(productRequest.getName());
+		mProduct.setQuantity(productRequest.getQuantity());
+		mProduct.setSku(productRequest.getSku());
+		mProduct.setUnitPrice(productRequest.getUnitPrice());
+		mProduct.setYoutubeLink(productRequest.getYoutubeLink());
 		
 		// mandatory file upload check
 		if(mProduct.getId() == 0) {
