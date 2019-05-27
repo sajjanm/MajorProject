@@ -19,7 +19,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Online Shopping - Membership</title>
+<title>Online Shopping- IIBIT</title>
 
 <script>
 
@@ -62,8 +62,7 @@
 	            </div>
 			</div>
 		</nav>
-		
-		
+
 		<!-- Page Content -->
 
 		<div class="content">
