@@ -161,7 +161,7 @@ public class ManagementController {
 		mProduct.setCode(productRequest.getCode());
 		mProduct.setDescription(productRequest.getDescription());
 		System.out.println("the date here is "+ productRequest.getExpireDate());
-		DateFormat format = new SimpleDateFormat("yyyy-dd-MM", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date date = format.parse(productRequest.getExpireDate());
 		mProduct.setExpireDate(date);
 		mProduct.setFile(productRequest.getFile());

@@ -116,6 +116,7 @@ public class ExcelService {
                 newProduct.setActive(true);
                 newProduct.setSupplierId(1);
                 newProduct.setMarkdown(0.0);
+                newProduct.setCode("default");
                 
                 productLists.add(newProduct);
                 System.out.println("the new size of list is "+productLists.size());
@@ -151,9 +152,7 @@ public class ExcelService {
             	product.setQuantity( Integer.parseInt(fieldValue));
                 break;
             case "EXPIRE":
-            	System.out.println("so called date is   "+fieldValue);
-            	System.out.println(new SimpleDateFormat("yyyy/dd/MM").parse(fieldValue) );
-                product.setExpireDate(new SimpleDateFormat("yyyy/dd/MM").parse(fieldValue) );
+            	product.setExpireDate(new SimpleDateFormat("yyyy-MM-dd").parse(fieldValue) );
                 break;
             case "DESCRIPTION":
                 product.setDescription((String) fieldValue);

@@ -11,11 +11,22 @@ import javax.persistence.Id;
 @Entity
 public class Category implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	private String name;
+	
+	private String description;
+	
+	@Column(name = "image_url")
+	private String imageURL;
+	
+	@Column(name = "is_active")
+	private boolean active = true;
+	
 	public int getId() {
 		return id;
 	}
@@ -47,32 +58,10 @@ public class Category implements Serializable {
 		this.active = active;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
 				+ ", active=" + active + "]";
 	}
 
-
-
-	/*
-	 * Private fields
-	 * */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private String name;
-	
-	private String description;
-	
-	@Column(name = "image_url")
-	private String imageURL;
-	
-	@Column(name = "is_active")
-	private boolean active = true;
-	
-	
 }

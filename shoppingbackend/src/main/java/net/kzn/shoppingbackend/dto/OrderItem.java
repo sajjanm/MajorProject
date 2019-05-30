@@ -17,9 +17,6 @@ import javax.persistence.Table;
 @Table(name = "order_item")
 public class OrderItem implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -33,14 +30,6 @@ public class OrderItem implements Serializable {
 	@JoinColumn(name = "order_id")
 	private OrderDetail orderDetail;
 
-	public OrderDetail getOrderDetail() {
-		return orderDetail;
-	}
-
-	public void setOrderDetail(OrderDetail orderDetail) {
-		this.orderDetail = orderDetail;
-	}
-
 	@Column (name = "buying_price")
 	private double buyingPrice;
 	
@@ -49,7 +38,14 @@ public class OrderItem implements Serializable {
 	
 	private double total;
 
-	
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -65,7 +61,6 @@ public class OrderItem implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
 
 	public double getBuyingPrice() {
 		return buyingPrice;
