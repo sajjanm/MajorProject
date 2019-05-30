@@ -19,11 +19,9 @@ public class UploadController {
 	
 	@PostMapping("/uploadExcelFile")
 	public String uploadFile(Model model, MultipartFile file) throws IOException {
-		System.out.println("I am inside upload excel api");
 	    InputStream in = file.getInputStream();
 	    File currDir = new File(".");
 	    String path = currDir.getAbsolutePath();
-	    System.out.println("and the file name is ::  " + file.getOriginalFilename());
 	    fileLocation = path.substring(0, path.length() - 1) + file.getOriginalFilename();
 	    FileOutputStream f = new FileOutputStream(fileLocation);
 	    int ch = 0;

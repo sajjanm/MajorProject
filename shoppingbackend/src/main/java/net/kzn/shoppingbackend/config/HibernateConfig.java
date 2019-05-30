@@ -6,10 +6,12 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Environment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -20,17 +22,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConfig {
 
 	// Change the below based on the DBMS you choose
-	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshopping";
-	private final static String DATABASE_DRIVER = "org.h2.Driver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_USERNAME = "sa";
-	private final static String DATABASE_PASSWORD = "";
-	
+//	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshopping";
+//	private final static String DATABASE_DRIVER = "org.h2.Driver";
+//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
+//	private final static String DATABASE_USERNAME = "sa";
+//	private final static String DATABASE_PASSWORD = "";
+
+	private final static String DATABASE_URL = "jdbc:mysql://projectinstance.cmayoohsm3v3.us-east-2.rds.amazonaws.com:3306/onlineShopping";
+	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+	private final static String DATABASE_USERNAME = "root";
+	private final static String DATABASE_PASSWORD =  "rootroot";
+
 	// dataSource bean will be available
 	@Bean("dataSource")
 	public DataSource getDataSource() {
 		
-		BasicDataSource dataSource = new BasicDataSource();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		
 		// Providing the database connection information
 		dataSource.setDriverClassName(DATABASE_DRIVER);
@@ -68,7 +76,7 @@ public class HibernateConfig {
 		properties.put("hibernate.dialect", DATABASE_DIALECT);		
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-		
+		properties.put(Environment.HBM2DDL_AUTO,"update");
 		//properties.put("hibernate.hbm2ddl.auto", "create");
 		
 		
