@@ -1,9 +1,3 @@
-/*!
- * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
 html {
 	height:100%;
 }
@@ -249,3 +243,266 @@ input:checked + .slider:before {
 	color: purple;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+body,.navbar,.pagination{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+*,*:hover{
+  transition: all 300ms;
+}
+.carousel-control{
+  opacity: 1;
+  background: none;
+  background-image: none;
+}
+.right.carousel-control, .carousel-control.left {
+  background: none;
+}
+.is-table-row .col-sm-4.col-lg-4.col-md-4 {
+  width: 100%;
+  text-align: center;
+}
+.is-table-row .col-sm-4.col-lg-4.col-md-4 > hr{
+  display: none;
+}
+.is-table-row .col-sm-4.col-lg-4.col-md-4 > h4{
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.btn{
+  transition: all 300ms;
+}
+.btn-primary:hover {
+  color: #1863e6;
+  background: transparent;
+}
+ol.breadcrumb {
+  background: none;
+  padding: 10px 0;
+  font-size: 14px;
+}
+table.dataTable {
+  clear: both;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+  width: 100% !important;
+}
+
+table.dataTable .thead tr th{
+  width: auto!important;
+}
+.form-control {
+  height: 40px;
+  border-radius: 2px;
+  box-shadow: none;
+  border-color: #a9a9a9;
+}
+.table>thead:first-child>tr:first-child>th,.table>tfoot>tr>th, .table>thead>tr>td {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    width: 120px;
+    display: inline-block;
+    height: 40px;
+    border-radius: 2px !important;
+    margin: 0 8px;
+}
+.table>tbody>tr>td{
+  font-size: 16px;
+  font-weight: 300;
+}
+.table>tbody>tr>td:nth-child(2){
+  font-size: 16px;
+  font-weight: 500;
+}
+.btn-success:hover {
+  color: #2f8034;
+  background: transparent;
+}
+.row.is-table-row{
+  margin-bottom: 20px;
+}
+.pagination>li{
+  font-size: 10px;
+}
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: 8px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.table>tbody>tr>td {
+  border: none;
+}
+footer .col-lg-12 p{
+  margin-bottom: 0;
+  text-align: center;
+  font-size:13px
+}
+.btn-warning:hover {
+  color: #eb9316;
+  background-color: transparent;
+  border-color: #eb9316;
+}
+.list-group-item:hover{
+  padding-left: 20px
+}
+a.list-group-item:hover, button.list-group-item:hover, a.list-group-item:focus, button.list-group-item:focus{
+  background-color: transparent;
+}
+/* .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+  border: none;
+  border-bottom: 1px solid #4582ec;
+  border-radius: 2px;
+} */
+.row .col-xs-12.col-sm-4 h3 {
+  margin-top: 0;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 33px;
+  height: 18px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: -10px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.table>tbody>tr>td:nth-child(8) .btn{
+  padding: 6px 10px;
+}
+.table>tbody>tr>td .btn{
+  padding: 6px 10px;
+}
+tr:nth-of-type(odd),  tr.odd {
+  background-color: #fff!important;
+}
+tr:nth-of-type(even),tr.even {
+  background-color: #f9f9f9!important;
+}
+.panel-heading{
+  padding: 3px 15px;
+}
+.panel-heading h4{
+  font-size: 15px;
+}
+.btn.btn-warning.btn-xs{
+	padding: 7px 10px
+}
+.carousel {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.form-horizontal .control-label{
+  font-weight: 500;
+}
+.customerListTable_wrapper .row .col-sm-12{
+  width: 100%;
+}
+.panel-footer{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.col-sm-2.hidden-xs img{
+  height: auto;
+}
+tfoot tr:nth-of-type(even),
+tfoot tr:nth-of-type(odd){
+  background: transparent!important;
+}
+/* add class in shipping-add */
+/* /cart/checkout?execution=e2s1 */
+.shipping-add h4{
+  font-size: 22px;
+}
+.shipping-add .cols-xs-12 h3{
+  font-size: 18px;
+  margin-top: 0;
+}
+.shipping-add .cols-xs-12 h4{
+  font-size: 16px;
+  margin-top: 0;
+}
+
+/* add class grand-total*/
+/* cart/checkout?execution=e2s3# */
+.col-md-6.grand-total h3{
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.col-md-6.grand-total h4{
+  font-size: 16px;
+  font-weight: normal;
+}
+.col-md-6.grand-total h5{
+  font-size: 16px;
+  font-weight: normal;
+}
+.col-md-6.grand-total hr{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.col-md-6.grand-total .text-right h3{
+  font-weight: normal;
+}
+
+.payment .panel-heading{
+  padding: 10px 15px;
+}
+.payment .panel-body .form-group label{
+  font-weight: normal;
+}
+.payment .nav-pills li.active a{
+  background-color: transparent;
+  color:#000;
+  font-size: 18px;
+}
+.payment .nav-pills li.active a span{
+  background-color: transparent;
+  font-size: 18px;
+	font-weight: 700;
+  color:#000;
+}
+.payment .btn.btn-success.btn-lg.btn-block{
+  width: 90%;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+
+.invoice-title  h2{
+  font-size: 18px;
+  margin-bottom: 0;
+}
+.invoice-title  h3{
+  font-size: 16px;
+  margin-bottom:0;
+}
+.invoice-title + hr{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.panel.panel-default .panel-heading{
+  padding: 10px 15px;
+}
+.alert.alert-success{
+  padding: 15px;
+}
+.alert.alert-success h3{
+  font-size: 20px;
+  margin: 0;
+}

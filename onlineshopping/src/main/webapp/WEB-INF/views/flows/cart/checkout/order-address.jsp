@@ -4,7 +4,7 @@
 
 	<div class="row">
 		
-			<div class="col-md-4">
+			<div class="col-md-4 shipping-add">
 				
 				<h4>Select Shipping Address</h4>
 				<hr/>

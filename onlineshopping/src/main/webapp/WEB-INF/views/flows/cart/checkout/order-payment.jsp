@@ -3,7 +3,7 @@
 
 	<div class="row">
 			<!--  To display all the goods -->
-			<div class="col-md-6">
+			<div class="col-md-6 grand-total">
 				
 				<div class="row">
 					<c:forEach items="${checkoutModel.cartLines}" var="cartLine">
@@ -26,7 +26,7 @@
 				
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-6 payment">
 	            <div class="panel panel-default">
 	                <div class="panel-heading">
 	                    <h3 class="panel-title">
