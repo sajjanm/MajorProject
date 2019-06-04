@@ -1,4 +1,4 @@
-<p class="lead">Shop Name</p>
+<p class="lead">Product Categories</p>
 
 
 

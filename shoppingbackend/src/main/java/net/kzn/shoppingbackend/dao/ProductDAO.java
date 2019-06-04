@@ -22,5 +22,5 @@ public interface ProductDAO {
 	List<Product> listActiveProductsByCategory(int categoryId);
 	List<Product> getLatestActiveProducts(int count);
 	List<Product> getNearExpireAndRunnigLowProducts(Date currentDate, Date limitingDate);
-	
+	int deactivateExpiredProduct(Date currentDate);
 }

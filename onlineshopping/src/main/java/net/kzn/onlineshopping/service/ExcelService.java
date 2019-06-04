@@ -116,7 +116,7 @@ public class ExcelService {
                 newProduct.setActive(true);
                 newProduct.setSupplierId(1);
                 newProduct.setMarkdown(0.0);
-                newProduct.setCode("default");
+//                newProduct.setCode("default");
                 
                 productLists.add(newProduct);
                 System.out.println("the new size of list is "+productLists.size());

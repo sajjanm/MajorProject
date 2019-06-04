@@ -2,6 +2,7 @@ package net.kzn.onlineshopping.controller;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.onlineshopping.exception.InvoiceNotFoundException;
 import net.kzn.onlineshopping.exception.ProductNotFoundException;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
+import net.kzn.shoppingbackend.dao.InvoiceDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
+import net.kzn.shoppingbackend.dto.OrderItem;
 import net.kzn.shoppingbackend.dto.Product;
 
 @Controller
@@ -34,6 +38,9 @@ public class PageController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private InvoiceDAO invoiceDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(@RequestParam(name="logout",required=false)String logout) {		
@@ -138,6 +145,30 @@ public class PageController {
 		
 	}
 	
+	/*
+	 * Viewing detail of a particular invoice
+	 * */
+	
+	@RequestMapping(value = "/show/{id}/invoice") 
+	public ModelAndView showInvoiceDetail(@PathVariable int id) throws InvoiceNotFoundException {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		List<OrderItem> orderList = invoiceDAO.getInvoiceDetails(id);
+		
+		if(orderList == null) throw new InvoiceNotFoundException();
+		
+	
+		mv.addObject("title", "Invoice detail");
+		mv.addObject("orderList", orderList);
+		
+		mv.addObject("userClickShowInvoiceDetail", true);
+		
+		
+		return mv;
+		
+	}
+	
 	
 	@RequestMapping(value="/membership")
 	public ModelAndView register() {
@@ -155,7 +186,7 @@ public class PageController {
 		ModelAndView mv= new ModelAndView("login");
 		mv.addObject("title", "Login");
 		if(error!=null) {
-			mv.addObject("message", "Username and Password is invalid!");
+			mv.addObject("message", "Username or Password is invalid!");
 		}
 		if(logout!=null) {
 			mv.addObject("logout", "You have logged out successfully!");

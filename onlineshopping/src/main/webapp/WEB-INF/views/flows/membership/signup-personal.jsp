@@ -1,28 +1,15 @@
 <%@include file="../flows-shared/header.jsp" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>			
 	<div class="container">
-		
-		
 		<div class="row">
-			
 			<div class="col-md-6 col-md-offset-3">
-				
 				<div class="panel panel-primary">
-				
 					<div class="panel-heading">
 						<h4>Sign Up - Personal</h4>
 					</div>
 					
 					<div class="panel-body">
-										
-						<sf:form
-							method="POST"
-							modelAttribute="user"
-							class="form-horizontal"
-							id="registerForm"
-						>
-						
-							
+						<sf:form method="POST" modelAttribute="user" class="form-horizontal" id="registerForm" >
 							<div class="form-group">
 								<label class="control-label col-md-4">First Name</label>
 								<div class="col-md-8">
@@ -31,7 +18,6 @@
 									<sf:errors path="firstName" cssClass="help-block" element="em"/> 
 								</div>
 							</div>
-
 
 							<div class="form-group">
 								<label class="control-label col-md-4">Last Name</label>
@@ -78,17 +64,17 @@
 								</div>
 							</div>
 							
-	<div class="form-group">
-		<label class="control-label col-md-4">Select Role</label>
-		<div class="col-md-8">
-			<label class="radio-inline">
-				<sf:radiobutton path="role" value="USER" checked="checked"/> User 				
-			</label>
-			<label class="radio-inline">
-				<sf:radiobutton path="role" value="SUPPLIER"/> Supplier
-			</label>
-		</div>
-	</div>							
+							<div class="form-group hidden">
+								<label class="control-label col-md-4">Select Role</label>
+								<div class="col-md-8">
+									<label class="radio-inline">
+										<sf:radiobutton path="role" value="USER" checked="checked"/> User 				
+									</label>
+									<label class="radio-inline">
+										<sf:radiobutton path="role" value="SUPPLIER"/> Supplier
+									</label>
+								</div>
+							</div>							
 
 							<div class="form-group">
 								<div class="col-md-offset-4 col-md-8">
@@ -97,22 +83,16 @@
 									</button>																	 
 								</div>
 							</div>
-						
-						
+										
 						</sf:form>					
-					
-					
+								
 					</div>
-				
-				
+					
 				</div>
-			
 			
 			</div>
 		
-		
 		</div>
-		
 		
 	</div>
 

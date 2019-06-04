@@ -66,6 +66,11 @@
 			                        <a href="${contextRoot}/cart/show">
 			                        	<span class="glyphicon glyphicon-shopping-cart"></span>&#160;<span class="badge">${userModel.cart.cartLines}</span> - &#36; ${userModel.cart.grandTotal} 
 			                        </a>
+			                    </li>
+			                    <li id="address">
+			                        <a href="${contextRoot}/customer/invoice">
+			                        	<span class="glyphicon glyphicon-usd"></span> - Past Invoice
+			                        </a>
 			                    </li>		     
 			                	<li role="separator" class="divider"></li>	                                   
 		                    </security:authorize>
@@ -75,7 +80,7 @@
 						  </ul>		
 						</li>    			    
 			    	</security:authorize>                    
-			    </ul>                
+			    </ul>               
                 
             </div>
             <!-- /.navbar-collapse -->

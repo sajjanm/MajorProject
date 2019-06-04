@@ -37,7 +37,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean add(User user) {
-		try {			
+		try {	
+			user.setEnabled(true);
 			sessionFactory.getCurrentSession().persist(user);			
 			return true;
 		}
@@ -127,6 +128,18 @@ public class UserDAOImpl implements UserDAO {
 				.getCurrentSession().createQuery(query, User.class)
 				.setParameter("userRole", userRole)
 				.getResultList();
+	}
+	
+	@Override
+	public boolean update(User user) {
+		try {
+			sessionFactory.getCurrentSession()
+			.saveOrUpdate(user);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

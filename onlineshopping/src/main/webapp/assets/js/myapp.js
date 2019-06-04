@@ -198,7 +198,6 @@ $(function() {
 							var dText = (this.checked)? 'You want to activate the Product?': 'You want to de-activate the Product?';
 							var checked = this.checked;
 							var checkbox = $(this);
-							debugger;
 						    bootbox.confirm({
 						    	size: 'medium',
 						    	title: 'Product Activation/Deactivation',
@@ -235,19 +234,16 @@ $(function() {
 
 	// execute the below code only where we have this table
 	if ($customerTable.length) {
-		// console.log('Inside the table!');
 
 		var jsonUrl = '';
 		jsonUrl = window.contextRoot + '/json/data/all/customers';
-		console.log(jsonUrl);
 
-		console.log($customerTable.DataTable);
 		$customerTable
 				.DataTable({
 
 					lengthMenu : [ [ 3, 5, 10, -1 ],
 							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
-					pageLength : 5,
+					pageLength : 10,
 					ajax : {
 						url : jsonUrl,
 						dataSrc : ''
@@ -264,10 +260,115 @@ $(function() {
 							},
 							{
 								data : 'contactNumber'
-							} 
+							},
+							{
+								data : 'enabled',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									var str = '';
+									if(data) {											
+										str += '<label class="switch"> <input type="checkbox" value="'+row.id+'" checked="checked">  <div class="slider round"> </div></label>';
+										
+									}else {
+										str += '<label class="switch"> <input type="checkbox" value="'+row.id+'">  <div class="slider round"> </div></label>';
+									}
+									
+									return str;
+								}
+							}
 
+					],
+					initComplete: function () {
+						var api = this.api();
+						api.$('.switch input[type="checkbox"]').on('change' , function() {							
+							var dText = (this.checked)? 'You want to activate the User?': 'You want to de-activate the User?';
+							var checked = this.checked;
+							var checkbox = $(this);
+						    bootbox.confirm({
+						    	size: 'medium',
+						    	title: 'User Activation/Deactivation',
+						    	message: dText,
+						    	callback: function (confirmed) {
+							        if (confirmed) {
+							            $.ajax({							            	
+							            	type: 'GET',
+							            	url: window.contextRoot + '/manage/customer/'+checkbox.prop('value')+'/activation',
+							        		timeout : 100000,
+							        		success : function(data) {
+							        			bootbox.alert(data);							        										        			
+							        		},
+							        		error : function(e) {
+							        			bootbox.alert('ERROR: '+ e);
+							        			//display(e);
+							        		}						            	
+							            });
+							        }
+							        else {							        	
+							        	checkbox.prop('checked', !checked);
+							        }
+						    	}
+						    });																											
+						});
+							
+					}
+
+				});
+	}
+
+	
+	// code for view all customer table
+	var $invoiceTable = $('#invoiceListTable');
+
+	// execute the below code only where we have this table
+	if ($invoiceTable.length) {
+
+		var jsonUrl = '';
+		jsonUrl = window.contextRoot + '/json/data/invoices';
+
+		$invoiceTable
+				.DataTable({
+
+					lengthMenu : [ [ 3, 5, 10, -1 ],
+							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
+					pageLength : 5,
+					ajax : {
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+								data : 'orderDate',
+								mRender : function(data, type, row) {
+									return new Date(data).toLocaleDateString('en-US')
+								}
+							},
+							{
+								data : 'orderCount'
+							},
+							{
+							
+								data : 'orderTotal',
+								mRender : function(data, type, row) {
+									return '&#36; ' + data
+								}
+							},
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									var str = '';
+									str += '<a href="'
+											+ window.contextRoot
+											+ '/show/'
+											+ data
+											+ '/invoice" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160;';
+									
+									return str;
+
+								}
+							}
 					]
-
 				});
 	}
 
@@ -372,7 +473,6 @@ $(function() {
 							var dText = (this.checked)? 'You want to activate the Product?': 'You want to de-activate the Product?';
 							var checked = this.checked;
 							var checkbox = $(this);
-							debugger;
 						    bootbox.confirm({
 						    	size: 'medium',
 						    	title: 'Product Activation/Deactivation',
@@ -511,7 +611,7 @@ $(function() {
 	if($alert.length) {
 		setTimeout(function() {
 	    	$alert.fadeOut('slow');
-		   }, 3000
+		   }, 8000
 		);		
 	}
 		

@@ -33,51 +33,63 @@
 	                        Payment Details
 	                    </h3>
 	                </div>
-	                <div class="panel-body">
-	                    <form role="form">
-	                    <div class="form-group">
-	                        <label for="cardNumber">
-	                            CARD NUMBER</label>
-	                        <div class="input-group">
-	                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-	                                required autofocus />
-	                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-	                        </div>
-	                    </div>
-	                    <div class="row">
-	                        <div class="col-xs-7 col-md-7">
-	                            <div class="form-group">
-	                                <label for="expityMonth">EXPIRY DATE</label>
-	                                <br/>
-	                                <div class="col-xs-6 col-lg-6 pl-ziro">
-	                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
-	                                </div>
-	                                <div class="col-xs-6 col-lg-6 pl-ziro">
-	                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
-	                            </div>
-	                        </div>
-	                        <div class="col-xs-5 col-md-5 pull-right">
-	                            <div class="form-group">
-	                                <label for="cvCode">
-	                                    CV CODE</label>
-	                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
-	                            </div>
-	                        </div>
-	                    </div>
-	                    </form>
-	                </div>
-	            	            
-		            <ul class="nav nav-pills nav-stacked">
-		                <li class="active"><a href="#"><span class="badge pull-right"> &#36; ${checkoutModel.checkoutTotal}/-</span> Final Payment</a></li>
+	                
+	                <ul class="nav nav-pills nav-stacked">
+		                <li class="active"><a href="#"><span class="badge pull-right"> &#36; ${checkoutModel.checkoutTotal}/-</span> Final Payment Amount</a></li>
 		            </ul>
 		            <br/>
-		            <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
 		            
+		            <ul class="nav nav-pills">
+					  <li class="active"><a data-toggle="pill" href="#card">Pay By Card</a></li>
+					  <li><a data-toggle="pill" href="#paypal">Pay by Paypal</a></li>
+					</ul>
+					
+					<div class="tab-content">
+					
+					  <div id="card" class="tab-pane fade in active">
+					    <div class="panel-body">
+		                    <form role="form">
+			                    <div class="form-group">
+			                        <label for="cardNumber"> CARD NUMBER</label>
+			                        <div class="input-group">
+			                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+			                                required autofocus />
+			                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+			                        </div>
+			                    </div>
+			                    <div class="row">
+			                        <div class="col-xs-7 col-md-7">
+			                            <div class="form-group">
+			                                <label for="expityMonth">EXPIRY DATE</label>
+			                                <br/>
+			                                <div class="col-xs-6 col-lg-6 pl-ziro">
+			                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+			                                </div>
+			                                <div class="col-xs-6 col-lg-6 pl-ziro">
+			                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+			                            </div>
+			                        </div>
+			                        <div class="col-xs-5 col-md-5 pull-right">
+			                            <div class="form-group">
+			                                <label for="cvCode"> CV CODE</label>
+			                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+			                            </div>
+			                        </div>
+			                    </div>
+             			        <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-warning btn-lg btn-block" role="button">Pay</a>
+		                    </form>
+		                </div>
+		       			            
+					  </div>
+					  
+					  <div id="paypal" class="tab-pane fade">
+			    	    <!-- Set up a container element for the button -->
+			    		<div id="paypal-button-container"></div>
+					  </div>
+					</div>
+	                
+	                
 	            </div>
-	            
-			
-			    <!-- Set up a container element for the button -->
-			    <div id="paypal-button-container"></div>
 
 			    <!-- Include the PayPal JavaScript SDK -->
 			    <script src="https://www.paypal.com/sdk/js?client-id=AXTodRfGiotiLk0cDsFNsBWIiiZeto_wiSTpNSbcdvYj4_ZpTMcm1Wh-31nNmxRXg0G93aBFE4MK4pzO&currency=AUD&disable-card=amex,visa,mastercard"></script>

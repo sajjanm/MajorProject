@@ -3,6 +3,8 @@ package net.kzn.shoppingbackend.daoimpl;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,10 +20,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	/*
-	 * SINGLE
-	 * */
 	
 	@Override
 	public Product get(int productId) {
@@ -166,7 +164,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getNearExpireAndRunnigLowProducts(Date currentDate, Date limitingDate){
 		
-		String query = "FROM Product where active = true and expireDate > :currentDate and expireDate < :limitingDate or quantity<10 ORDER BY id";
+		String query = "FROM Product where active = false and expireDate >= :currentDate and expireDate <= :limitingDate or quantity<10 ORDER BY expireDate";
 		
 		return sessionFactory
 				.getCurrentSession()
@@ -174,6 +172,17 @@ public class ProductDAOImpl implements ProductDAO {
 				.setParameter("currentDate", currentDate)
 				.setParameter("limitingDate", limitingDate)
 				.getResultList();
+		
+	}
+	
+	@Override
+	public int deactivateExpiredProduct(Date currentDate){
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(
+			    "UPDATE Product AS p SET p.active = false where expireDate <= :currentDate");
+		query.setParameter("currentDate", currentDate);
+		int result = query.executeUpdate();
+		return result;	
 		
 	}
 

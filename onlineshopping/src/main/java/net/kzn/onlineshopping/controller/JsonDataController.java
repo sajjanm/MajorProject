@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.kzn.onlineshopping.service.InvoiceService;
 import net.kzn.onlineshopping.service.ProductService;
 import net.kzn.onlineshopping.service.UserService;
 import net.kzn.shoppingbackend.dao.ProductDAO;
+import net.kzn.shoppingbackend.dto.OrderDetail;
 import net.kzn.shoppingbackend.dto.Product;
 import net.kzn.shoppingbackend.dto.User;
 
@@ -28,6 +30,8 @@ public class JsonDataController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private InvoiceService invoiceService;
 
 	@RequestMapping("/admin/all/products")
 	@ResponseBody
@@ -65,6 +69,12 @@ public class JsonDataController {
 		
 		return productDAO.listActiveProductsByCategory(id);
 				
+	}
+	
+	@RequestMapping("/invoices")
+	@ResponseBody
+	public List<OrderDetail> getCustomerInvoices(){
+		return invoiceService.getCustomerInvoices();
 	}
 	
 	

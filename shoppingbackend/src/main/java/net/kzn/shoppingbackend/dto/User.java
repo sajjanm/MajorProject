@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -47,7 +48,9 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter password!")
 	private String password;
 	
-	private boolean enabled = true;
+	@ColumnDefault ("true")
+	@Column(name = "enabled", columnDefinition = "boolean default true", nullable = false)
+	private boolean enabled;
 	
 	@Transient
 	private String confirmPassword;

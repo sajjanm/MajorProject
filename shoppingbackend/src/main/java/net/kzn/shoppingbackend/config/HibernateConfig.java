@@ -74,8 +74,9 @@ public class HibernateConfig {
 		
 		
 		properties.put("hibernate.dialect", DATABASE_DIALECT);		
-		properties.put("hibernate.show_sql", "true");
-		properties.put("hibernate.format_sql", "true");
+//		properties.put("hibernate.show_sql", "true");
+//		properties.put("hibernate.format_sql", "true");
+//		properties.put("hibernate.use_sql_comments", "true");
 		properties.put(Environment.HBM2DDL_AUTO,"update");
 		//properties.put("hibernate.hbm2ddl.auto", "create");
 		

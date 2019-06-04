@@ -29,6 +29,7 @@
 								<th>Last Name</th>
 								<th>Email</th>
 								<th>Customer Number</th>
+								<th>Activate</th>
 							</tr>
 						</thead>
 					</table>

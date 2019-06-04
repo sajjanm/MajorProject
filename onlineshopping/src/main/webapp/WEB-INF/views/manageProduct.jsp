@@ -54,7 +54,7 @@
 							<label class="control-label col-md-4">Unit Price</label>
 							<div class="col-md-8">
 								<sf:input type="number" path="unitPrice" class="form-control"
-									placeholder="Enter Unit Price" />
+									placeholder="Enter Unit Price"  min="0" value="0" step=".01" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em"/>
 							</div>
 						</div>
@@ -187,7 +187,7 @@
 	</div>
 	
 	<hr/>	
-	<h1>Products that are expiring soon</h1>
+	<h1>Products that are expiring soon | Running stock less than 10</h1>
 	<h5>The products that are expiring in less than 2 weeks</h5>
 	<hr/>
 	

@@ -33,6 +33,7 @@ import net.kzn.onlineshopping.validator.ExcelFileValidator;
 import net.kzn.onlineshopping.validator.ProductValidator;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
+import net.kzn.shoppingbackend.dao.UserDAO;
 import net.kzn.shoppingbackend.dto.Category;
 import net.kzn.shoppingbackend.dto.ExcelFile;
 import net.kzn.shoppingbackend.dto.Product;
@@ -49,6 +50,9 @@ public class ManagementController {
 	
 	@Autowired
 	private CategoryDAO categoryDAO;	
+	
+	@Autowired
+	private UserDAO userDAO;
 	
 	@Autowired
 	private ExcelService excelService;
@@ -113,7 +117,6 @@ public class ManagementController {
 	public String managePostUpload(@Valid @ModelAttribute("nexcelFIle") ExcelFile mExcelFile, 
 			BindingResult results, Model model, HttpServletRequest request) {
 		
-		logger.info("FInally I am inside the post method of the upload excel file");
 		logger.info("the file name is : "+ mExcelFile.getFile().getOriginalFilename());
 		// mandatory file upload check
 		// edit check only when the file has been selected
@@ -136,14 +139,15 @@ public class ManagementController {
 	}
 
 	@RequestMapping("/{id}/product")
-	public ModelAndView manageProductEdit(@PathVariable int id) {		
+	public ModelAndView manageProductEdit(@PathVariable int id) throws ParseException {		
 
 		ModelAndView mv = new ModelAndView("page");	
 		mv.addObject("title","Product Management");		
 		mv.addObject("userClickManageProduct",true);
 		
-		// Product nProduct = new Product();		
-		mv.addObject("product", productDAO.get(id));
+		// Product nProduct = new Product();
+		mv.addObject("product", productService.getByIdWithDateFormatted(id));
+//		mv.addObject("product", productDAO.get(id));
 
 			
 		return mv;
@@ -160,7 +164,6 @@ public class ManagementController {
 		mProduct.setCategoryId(productRequest.getCategoryId());
 		mProduct.setCode(productRequest.getCode());
 		mProduct.setDescription(productRequest.getDescription());
-		System.out.println("the date here is "+ productRequest.getExpireDate());
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date date = format.parse(productRequest.getExpireDate());
 		mProduct.setExpireDate(date);
@@ -244,10 +247,17 @@ public class ManagementController {
 		mv.addObject("title","View Customers");		
 		mv.addObject("userClickCustomerManagement",true);
 		
-		return mv;
-		
-		
-		
+		return mv;		
+	}
+	
+	@RequestMapping(value = "/customer/{id}/activation", method=RequestMethod.GET)
+	@ResponseBody
+	public String managePostCustomerActivation(@PathVariable int id) {
+		User user = userDAO.get(id);
+		boolean isActive = user.isEnabled();
+		user.setEnabled(!isActive);
+		userDAO.update(user);		
+		return (isActive)? "User Dectivated Successfully!": "User Activated Successfully";
 	}
 }
 

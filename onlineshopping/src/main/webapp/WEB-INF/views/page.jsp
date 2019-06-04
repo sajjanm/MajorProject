@@ -101,7 +101,7 @@
 				<%@include file="uploadProduct.jsp"%>
 			</c:if>	
 						
-			<!-- Load only when user clicks upload product -->
+			<!-- Load only when user clicks view customers -->
 			<c:if test="${userClickCustomerManagement == true}">
 				<%@include file="listCustomers.jsp"%>
 			</c:if>	
@@ -109,6 +109,16 @@
 			<!-- Load only when user clicks manage product -->
 			<c:if test="${userClickShowCart == true}">
 				<%@include file="cart.jsp"%>
+			</c:if>	
+			
+			<!-- Load only when user clicks to see invoice details -->
+			<c:if test="${userClickPastInvoice == true}">
+				<%@include file="invoice.jsp"%>
+			</c:if>	
+			
+			<!-- Load only when user clicks invoice details -->
+			<c:if test="${userClickShowInvoiceDetail == true}">
+				<%@include file="invoiceDetail.jsp"%>
 			</c:if>	
 
 		</div>

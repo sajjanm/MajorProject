@@ -22,7 +22,7 @@ public interface UserDAO {
 	List<Address> listShippingAddresses(int userId);
 	
 	List<User> getUserByRole(String userRole);
-	
+	boolean update(User user);
 
 	
 }

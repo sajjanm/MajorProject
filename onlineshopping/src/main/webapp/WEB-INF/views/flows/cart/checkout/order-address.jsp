@@ -47,7 +47,7 @@
 						
 							
 							<div class="form-group">
-								<label class="control-label col-md-4" for="addressLineOne">Address Line One</label>
+								<label class="control-label col-md-4" for="addressLineOne">Unit Number</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="addressLineOne" class="form-control"
 										placeholder="Enter Address Line One" />
@@ -56,7 +56,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="addressLineTwo">Address Line Two</label>
+								<label class="control-label col-md-4" for="addressLineTwo">Street Level Address</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="addressLineTwo" class="form-control"
 										placeholder="Enter Address Line Two" />
@@ -65,7 +65,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="city">City</label>
+								<label class="control-label col-md-4" for="city">Suburb</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="city" class="form-control"
 										placeholder="Enter City Name" />
