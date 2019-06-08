@@ -68,10 +68,11 @@
                     <div class="col-sm-4" ng-repeat="product in pCtrl.mvProducts">                    	
                         <div class="thumbnail">
                             <img ng-src="${images}/{{product.code}}.jpg" alt="{{product.name}}" class="landingImg">
-                            <h5>{{product.name}}</h5>
-                            <hr/>
+                            <div class="clearfix">
+                            <h5 class="pull-left">{{product.name}}</h5>
+                            <h4 class="pull-right">&#36; {{product.unitPrice}}</h4>
+                       </div>
                             <div class="caption">
-                                <h4 class="pull-right">&#36; {{product.unitPrice}}</h4>
                                 <p>{{product.description}}</p>
                                 <a ng-href="${contextRoot}/show/{{product.id}}/product" class="btn btn-primary pull-right">View</a>
                             </div>
@@ -98,10 +99,14 @@
                     <div class="col-sm-4" ng-repeat="product in pCtrl.mpProducts">                    	
                         <div class="thumbnail">
                             <img ng-src="${images}/{{product.code}}.jpg" alt="{{product.name}}" class="landingImg">
+                            <div class="clearfix">
                             <h5>{{product.name}}</h5>
+                            
+                                <h4 class="pull-right">&#36; {{product.unitPrice}}</h4>
+                            </div>
+                            
                             <hr/>
                             <div class="caption">
-                                <h4 class="pull-right">&#36; {{product.unitPrice}}</h4>
                                 <p>{{product.description}}</p>
                                 <a ng-href="${contextRoot}/show/{{product.id}}/product" class="btn btn-primary pull-right">View</a>
                             </div>

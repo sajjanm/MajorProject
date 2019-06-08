@@ -54,7 +54,7 @@
 							<label class="control-label col-md-4">Unit Price</label>
 							<div class="col-md-8">
 								<sf:input type="number" path="unitPrice" class="form-control"
-									placeholder="Enter Unit Price"  min="0" value="0" step=".01" />
+									placeholder="Enter Unit Price" min="0.00" step=".01" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em"/>
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 							<label class="control-label col-md-4">Exipre</label>
 							<div class="col-md-8">
 								<sf:input type="date" path="expireDate" class="form-control"
-									placeholder="Expire Date" />
+									placeholder="Expire Date" value="expireDate"/>
 								<sf:errors path="expireDate" cssClass="help-block" element="em"/> 
 							</div>
 						</div>

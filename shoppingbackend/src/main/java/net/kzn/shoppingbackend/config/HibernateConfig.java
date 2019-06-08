@@ -28,11 +28,17 @@ public class HibernateConfig {
 //	private final static String DATABASE_USERNAME = "sa";
 //	private final static String DATABASE_PASSWORD = "";
 
-	private final static String DATABASE_URL = "jdbc:mysql://projectinstance.cmayoohsm3v3.us-east-2.rds.amazonaws.com:3306/onlineShopping";
+//	private final static String DATABASE_URL = "jdbc:mysql://projectinstance.cmayoohsm3v3.us-east-2.rds.amazonaws.com:3306/onlineShopping";
+//	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+//	private final static String DATABASE_USERNAME = "root";
+//	private final static String DATABASE_PASSWORD =  "rootroot";
+	
+	private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/onlineshopping";
 	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
 	private final static String DATABASE_USERNAME = "root";
-	private final static String DATABASE_PASSWORD =  "rootroot";
+	private final static String DATABASE_PASSWORD =  "root1";
 
 	// dataSource bean will be available
 	@Bean("dataSource")
@@ -74,11 +80,11 @@ public class HibernateConfig {
 		
 		
 		properties.put("hibernate.dialect", DATABASE_DIALECT);		
-//		properties.put("hibernate.show_sql", "true");
-//		properties.put("hibernate.format_sql", "true");
-//		properties.put("hibernate.use_sql_comments", "true");
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.format_sql", "true");
+		properties.put("hibernate.use_sql_comments", "true");
 		properties.put(Environment.HBM2DDL_AUTO,"update");
-		//properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		
 		
 		return properties;

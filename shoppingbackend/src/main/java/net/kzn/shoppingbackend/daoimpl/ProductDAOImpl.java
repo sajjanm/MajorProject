@@ -149,7 +149,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductsByParam(String param, int count) {
 		
-		String query = "FROM Product WHERE active = true ORDER BY " + param + " DESC";
+		String query = "FROM Product WHERE active = true ORDER BY " + param + " DESC"; 
 		
 		return sessionFactory
 					.getCurrentSession()
